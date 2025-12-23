@@ -10,7 +10,7 @@ getAInv(ped)
 \item{ped}{\code{\link{pedigree}}}
 }
 \value{
-matrix (\linkS4class{dsCMatrix} - symmetric sparse)
+matrix (\link[Matrix]{dsCMatrix-class} - symmetric sparse)
 }
 \description{
 Returns the inverse of additive relationship matrix for the

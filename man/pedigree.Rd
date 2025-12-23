@@ -7,27 +7,79 @@
 pedigree(sire, dam, label)
 }
 \arguments{
-\item{sire}{integer vector or factor representation of the sires}
+\item{sire}{integer vector or factor representation of the sires (see details)}
 
-\item{dam}{integer vector or factor representation of the dams}
+\item{dam}{integer vector or factor representation of the dams (see details)}
 
-\item{label}{character vector of individual labels}
+\item{label}{integer or character vector of individual labels/names
+(see details)}
 }
 \value{
-an pedigree object of class \linkS4class{pedigree}
+an pedigree object of class \link{pedigree-class}
 }
 \description{
 A simple constructor for a pedigree object. The main point for
-  the constructor is to use coercions to make the calls easier.
+  the constructor is to use coercions to make later function calls easier.
 }
-\note{
+\details{
 \code{sire}, \code{dam} and \code{label} must all have the
   same length and all labels in \code{sire} and \code{dam} must occur
-  in \code{label}
+  in \code{label} unless they are unknown (represented either with \code{0}
+  or \code{NA} - see examples).
+
+  Parents must precede (=appear in a row before) progeny.
+
+  See examples on requirements and capability of this function with respect
+  to encoding and ordering of the parents and progeny. The key point is that
+  \code{sire} and \code{dam} are first converted to a factor (hence any label
+  and their order are allowed) and then the factors are converted to an
+  integer considering \code{label} as the allowed levels and their order.
+  Importantly, ordering in \code{label} determines the order (see examples).
+
+  \code{label} is converted to character internally representing individual
+  labels/names.
 }
 \examples{
+# Parent labels as integers with NA as unknown
 ped <- pedigree(sire = c(NA, NA, 1,  1, 4, 5),
                 dam =  c(NA, NA, 2, NA, 3, 2),
                 label = 1:6)
 ped
+
+# Parent labels as integers with 0 as unknown
+ped <- pedigree(sire = c(0, 0, 1, 1, 4, 5),
+                dam =  c(0, 0, 2, 0, 3, 2),
+                label = 1:6)
+ped
+
+# Parent labels as factors with NA as unknown
+ids <- letters[1:6]
+ped <- pedigree(sire = factor(c(NA, NA, "a", "a", "d", "e")),
+                dam =  factor(c(NA, NA, "b",  NA, "c", "b")),
+                label = ids)
+ped
+
+# Parent labels as factors with 0 as unknown
+ids <- letters[1:6]
+ped <- pedigree(sire = factor(c(0, 0, "a", "a", "d", "e")),
+                dam =  factor(c(0, 0, "b",   0, "c", "b")),
+                label = ids)
+ped
+
+# Showcase ordering requirement/capability (parents precede progeny)
+    pedigree(sire = c(  0,   1), dam =  c( 0,  0), label = c(  1,   2))  #   correct
+try(pedigree(sire = c(  1,   0), dam =  c( 0,  0), label = c(  1,   2))) # incorrect
+    pedigree(sire = c( NA, "A"), dam =  c(NA, NA), label = c("A", "B"))  #   correct
+try(pedigree(sire = c("A",  NA), dam =  c(NA, NA), label = c("A", "B"))) # incorrect
+    pedigree(sire = c( NA, "B"), dam =  c(NA, NA), label = c("B", "A"))  #   correct
+try(pedigree(sire = c("B",  NA), dam =  c(NA, NA), label = c("B", "A"))) # incorrect
+
+# Showcase ordering and encoding requirement/capability
+pedigree(sire = c(NA, NA, "A"), dam =  c(NA, NA, "B"), label = c("A", "B", "D"))
+pedigree(sire = c(NA, NA, "D"), dam =  c(NA, NA, "B"), label = c("D", "B", "A"))
+pedigree(sire = c(NA, NA,   1), dam =  c(NA, NA,   4), label = c(  1,   4,   6))
+pedigree(sire = c(NA, NA,   6), dam =  c(NA, NA,   4), label = c(  6,   4,   1))
+}
+\seealso{
+\code{link{editPed}}, \code{link{prunePed}}, and \code{link{ped2DF}}
 }

@@ -19,7 +19,7 @@ of the factor are used as the labels. Default is the complete set of
 individuals in the pedigree.}
 }
 \value{
-matrix (\linkS4class{dtCMatrix} - upper triangular sparse)
+matrix (\link[Matrix]{dtCMatrix-class} - upper triangular sparse)
 }
 \description{
 Determine the right Cholesky factor of the relationship matrix
@@ -29,8 +29,7 @@ Determine the right Cholesky factor of the relationship matrix
 \details{
 Note that the right Cholesky factor is returned, which is upper
   triangular, that is from A = LL' = R'R (lower %*% upper) we get R = L'
-  (upper triangular) and not L (lower triangular) as the function name might
-  suggest.
+  (upper triangular) and not L (lower triangular).
 }
 \section{Functions}{
 \itemize{

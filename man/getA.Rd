@@ -15,7 +15,7 @@ which to restrict the relationship matrix and corresponding factor. If
 labels. Default is the complete set of individuals in the pedigree.}
 }
 \value{
-matrix (\linkS4class{dsCMatrix} - symmetric sparse)
+matrix (\link[Matrix]{dsCMatrix-class} - symmetric sparse)
 }
 \description{
 Returns the additive relationship matrix for the pedigree.

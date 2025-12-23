@@ -13,7 +13,7 @@ getLInv(ped)
 \item{ped}{\code{\link{pedigree}}}
 }
 \value{
-matrix (\linkS4class{dtCMatrix} - triangular sparse)
+matrix (\link[Matrix]{dtCMatrix-class} - triangular sparse)
 }
 \description{
 Get inverse of the left Cholesky factor of the relationship

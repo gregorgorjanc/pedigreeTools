@@ -1,3 +1,5 @@
+# fmt: skip file
+
 #### "pedigree" class methods
 
 #' @title Constructor for pedigree objects
@@ -10,7 +12,7 @@
 #' @param label integer or character vector of individual labels/names
 #'   (see details)
 #'
-#' @return an pedigree object of class \linkS4class{pedigree}
+#' @return an pedigree object of class \link{pedigree-class}
 #'
 #' @details \code{sire}, \code{dam} and \code{label} must all have the
 #'   same length and all labels in \code{sire} and \code{dam} must occur
@@ -113,7 +115,7 @@ setAs("pedigree", "data.frame",
 #'
 #' @description Express a pedigree as a data frame with \code{sire} and
 #'   \code{dam} stored as factors. If the pedigree is an object of
-#'   class \linkS4class{pedinbred} then the inbreeding coefficients are
+#'   class \link{pedinbred-class} then the inbreeding coefficients are
 #'   appended as the variable \code{F}
 #'
 #' @param x \code{\link{pedigree}}
@@ -236,7 +238,7 @@ getDInv <- function(ped, vector = TRUE) {
 #' @description Get inverse gene flow matrix from a pedigree.
 #'
 #' @param ped \code{\link{pedigree}}
-#' @return matrix (\linkS4class{dtCMatrix} - lower unitriangular sparse)
+#' @return matrix (\link[Matrix]{dtCMatrix-class} - lower unitriangular sparse)
 #' @export
 #' @examples
 #' ped <- pedigree(sire = c(NA, NA, 1,  1, 4, 5),
@@ -266,7 +268,7 @@ getTInv <- function(ped) {
 #' @description Get gene flow matrix from a pedigree.
 #'
 #' @param ped \code{\link{pedigree}}
-#' @return matrix (\linkS4class{dtCMatrix} - lower unitriangular sparse)
+#' @return matrix (\link[Matrix]{dtCMatrix-class} - lower unitriangular sparse)
 #' @export
 #' @examples
 #' ped <- pedigree(sire = c(NA, NA, 1,  1, 4, 5),
@@ -310,7 +312,7 @@ getT <- function(ped) {
 #'   relationship coefficients. Genet Sel Evol 34, 409 (2002).
 #'   https://doi.org/10.1186/1297-9686-34-4-409
 #'
-#' @return matrix (\linkS4class{dtCMatrix} - upper triangular sparse)
+#' @return matrix (\link[Matrix]{dtCMatrix-class} - upper triangular sparse)
 #' @export
 #' @examples
 #' ped <- pedigree(sire = c(NA, NA, 1,  1, 4, 5),
@@ -366,7 +368,7 @@ getL <- relfactor
 #'   triangular).
 #'
 #' @param ped \code{\link{pedigree}}
-#' @return matrix (\linkS4class{dtCMatrix} - triangular sparse)
+#' @return matrix (\link[Matrix]{dtCMatrix-class} - triangular sparse)
 #' @export
 #' @examples
 #' ped <- pedigree(sire = c(NA, NA, 1,  1, 4, 5),
@@ -415,7 +417,7 @@ getLInv <- relfactorInv
 #'   pedigree.
 #'
 #' @param ped \code{\link{pedigree}}
-#' @return matrix (\linkS4class{dsCMatrix} - symmetric sparse)
+#' @return matrix (\link[Matrix]{dsCMatrix-class} - symmetric sparse)
 #' @export
 #' @examples
 #' ped <- pedigree(sire = c(NA, NA, 1,  1, 4, 5),
@@ -458,7 +460,7 @@ getAInv <- function(ped) {
 #'   \code{labs} is a factor then the levels of the factor are used as the
 #'   labels. Default is the complete set of individuals in the pedigree.
 #'
-#' @return matrix (\linkS4class{dsCMatrix} - symmetric sparse)
+#' @return matrix (\link[Matrix]{dsCMatrix-class} - symmetric sparse)
 #' @export
 #' @examples
 #' ped <- pedigree(sire = c(NA, NA, 1,  1, 4, 5),
@@ -503,7 +505,7 @@ getA <- function(ped, labs = NULL) {
 #'   relationship coefficients. Genet Sel Evol 34, 409 (2002).
 #'   https://doi.org/10.1186/1297-9686-34-4-409
 #'
-#' @return matrix (\linkS4class{dsCMatrix} - symmetric sparse)
+#' @return matrix (\link[Matrix]{dsCMatrix-class} - symmetric sparse)
 #' @export
 #' @examples
 #' ped <- pedigree(sire = c(NA, NA, 1,  1, 4, 5),

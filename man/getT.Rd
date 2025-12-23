@@ -10,7 +10,7 @@ getT(ped)
 \item{ped}{\code{\link{pedigree}}}
 }
 \value{
-matrix (\linkS4class{dtCMatrix} - lower unitriangular sparse)
+matrix (\link[Matrix]{dtCMatrix-class} - lower unitriangular sparse)
 }
 \description{
 Get gene flow matrix from a pedigree.
