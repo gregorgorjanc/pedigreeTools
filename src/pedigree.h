@@ -5,6 +5,7 @@
 /* Rdefines.h includes Rinternals.h (for SEXP, REAL, etc.) and defines
  * GET_SLOT, MAKE_CLASS, NEW_OBJECT, SET_SLOT, etc. */
 #include <Rdefines.h>
+#include <R_ext/Memory.h>
 
 SEXP pedigree_chol(SEXP x, SEXP ans);
 SEXP pedigree_inbreeding(SEXP x);
